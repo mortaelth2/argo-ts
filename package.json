@@ -1,0 +1,69 @@
+{
+  "name": "@mortaelth2/argo-ts",
+  "version": "0.1.0",
+  "description": "A cdk8s-based ArgoCD Config Management Plugin framework with self-deploying component hierarchy",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "docker"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "prepublishOnly": "pnpm run build",
+    "import-argocd-types": "./scripts/import-argocd-types.sh",
+    "check-circular-deps": "npx madge -c --ts-config ./tsconfig.json --extensions ts src/*",
+    "prettier-check": "npx prettier --check '**/*.ts'",
+    "prettier-fix": "npx prettier --write '**/*.ts'"
+  },
+  "peerDependencies": {
+    "cdk8s": "^2.70.0",
+    "constructs": "^10.4.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^24.8.1",
+    "cdk8s": "^2.70.21",
+    "constructs": "^10.4.2",
+    "jest": "^30.3.0",
+    "ts-jest": "^29.4.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "prettier": "3.6.2",
+    "madge": "^8.0.0"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": "*.yaml",
+        "options": {
+          "tabWidth": 2
+        }
+      },
+      {
+        "files": "*.json",
+        "options": {
+          "tabWidth": 2
+        }
+      }
+    ],
+    "tabWidth": 4,
+    "printWidth": 140
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mortaelth2/argo-ts.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
+}
