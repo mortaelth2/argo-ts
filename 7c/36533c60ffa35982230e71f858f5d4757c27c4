@@ -1,0 +1,42 @@
+AGENTS.md
+  s_4d2d2aa4ee8686::t_df9f5ce7794771 150
+  s_4d2d2aa4ee8686::t_4ba3a14b8fe67f 128
+  s_4d2d2aa4ee8686::t_26df09d8f0b489 8
+package.json
+  s_4d2d2aa4ee8686::t_a21620f3718339 2
+  h_c67e2d92658104 3
+  s_4d2d2aa4ee8686::t_5ed44fa1e58464 66
+  s_198a531c2c0a9f::t_f26912baaa5cf3 67
+.npmrc
+  s_4d2d2aa4ee8686::t_7c8a75f69bb80e 1
+  s_4d2d2aa4ee8686::t_90023c82835a25 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "7c36533c60ffa35982230e71f858f5d4757c27c4",
+  "prompts": {},
+  "humans": {
+    "h_c67e2d92658104": {
+      "author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  },
+  "sessions": {
+    "s_198a531c2c0a9f": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "ee196157-bbc8-4523-ad40-52a914852c62",
+        "model": "gpt-4.1"
+      },
+      "human_author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    },
+    "s_4d2d2aa4ee8686": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7060ea75-7489-4255-bfce-9dcb0e05247c",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  }
+}
