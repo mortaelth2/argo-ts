@@ -5,7 +5,7 @@
 **What:** A generic, open-source framework for building self-deploying Kubernetes infrastructure using TypeScript.
 **How:** Runs as an ArgoCD [Config Management Plugin (CMP)](https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/) — ArgoCD invokes the consumer's entry point with an env var specifying which component to output.
 **Why:** Type-safe, composable, hierarchical infrastructure with automatic ArgoCD Application generation.
-**Package:** `@mortaelth2/argo-ts` on GitHub Packages (npm).
+**Package:** `@mortaelth/argo-ts` on the public npm registry.
 
 **Tech stack:** TypeScript 5.9, cdk8s 2.70, Node 24, pnpm.
 **Peer dependencies:** `cdk8s`, `constructs`.
@@ -125,7 +125,7 @@ Options: `{ obfuscate?: boolean, decode?: boolean }`. Obfuscation defaults ON un
 └── tsconfig.json             # outDir: dist, rootDir: src
 ```
 
-**Build output:** `dist/` (published to npm). Consumers import from `@mortaelth2/argo-ts`.
+**Build output:** `dist/` (published to npm). Consumers import from `@mortaelth/argo-ts`.
 
 ---
 
@@ -147,7 +147,7 @@ This downloads CRDs from the ArgoCD GitHub repo and runs `cdk8s import`.
 ## How Consumers Use This Framework
 
 ```typescript
-import { ArgoBootstrapApp, ArgoBootstrapAppProps, SynthesisFileManager, ComponentOutputManager } from "@mortaelth2/argo-ts";
+import { ArgoBootstrapApp, ArgoBootstrapAppProps, SynthesisFileManager, ComponentOutputManager } from "@mortaelth/argo-ts";
 import { App } from "cdk8s";
 
 class MyApp extends ArgoBootstrapApp {
