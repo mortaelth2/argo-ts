@@ -1,0 +1,19 @@
+package.json
+  s_35ce19f7a14b98::t_dbef7673b7e2cf 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0fa8350456327cd603c27ebadb8c57c351e35adc",
+  "prompts": {},
+  "sessions": {
+    "s_35ce19f7a14b98": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f58496ba-0458-4916-8f3c-d2d3e250f677",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  }
+}
