@@ -118,7 +118,7 @@ export class ComponentOutputManager {
      */
     static findManifestFile(distDir: string, componentName: string): string {
         const files = fs.readdirSync(distDir);
-        const manifestFile = files.find((file) => file === componentName || file.match(new RegExp(`${componentName}\\.k8s\\.yaml`)));
+        const manifestFile = files.find((file) => file === componentName || file === `${componentName}.k8s.yaml`);
 
         if (!manifestFile) {
             throw new Error(`No file in dist matching component name: ${componentName}\n` + `Available files: ${files.join(", ")}`);
