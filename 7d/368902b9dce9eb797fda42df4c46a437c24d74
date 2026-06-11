@@ -1,0 +1,23 @@
+spec/syncOptions.spec.ts
+  s_4dd9a2330b1a09::t_6d07cb66fc870e 1-56
+src/argoApp.ts
+  s_4dd9a2330b1a09::t_d3a9196cef7b4d 248-257
+package.json
+  s_4dd9a2330b1a09::t_fc53c007c4eb47 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "7d368902b9dce9eb797fda42df4c46a437c24d74",
+  "prompts": {},
+  "sessions": {
+    "s_4dd9a2330b1a09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cacc6eed-8e36-440e-b7b6-12596139887b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  }
+}
