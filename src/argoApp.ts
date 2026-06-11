@@ -245,6 +245,16 @@ export abstract class ArgoBootstrapApp extends Chart {
             mergedSpec.sources[0].plugin.env = [...mainSource.plugin.env, ...filteredChildEnvs];
         }
 
+        // Special handling for syncOptions - replace instead of index-merge.
+        // lodash merge overlays arrays by index, so a child array shorter than the
+        // enhancedSyncPolicy default leaks default tail entries (e.g. a stray
+        // ServerSideApply=true) and misaligns the rest. When the child specifies
+        // syncOptions, take them verbatim (deduped, order-preserving).
+        const childSyncOptions = childApp.argoAppSpec?.syncPolicy?.syncOptions;
+        if (mergedSpec.syncPolicy && Array.isArray(childSyncOptions)) {
+            mergedSpec.syncPolicy.syncOptions = [...new Set(childSyncOptions)];
+        }
+
         return mergedSpec;
     }
 
