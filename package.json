@@ -24,20 +24,20 @@
     "constructs": "^10.4.0"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.18.1"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/lodash": "^4.17.20",
-    "@types/node": "^24.8.1",
-    "cdk8s": "^2.70.21",
-    "constructs": "^10.4.2",
-    "jest": "^30.3.0",
-    "ts-jest": "^29.4.9",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
+    "@types/lodash": "^4.17.24",
+    "@types/node": "^24.13.3",
+    "cdk8s": "^2.70.87",
+    "constructs": "^10.7.2",
+    "jest": "^30.4.2",
+    "madge": "^8.0.0",
     "prettier": "3.6.2",
-    "madge": "^8.0.0"
+    "ts-jest": "^29.4.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "prettier": {
     "trailingComma": "all",
