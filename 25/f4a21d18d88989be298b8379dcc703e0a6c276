@@ -1,0 +1,14 @@
+.gitignore
+  h_c67e2d92658104 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "25f4a21d18d88989be298b8379dcc703e0a6c276",
+  "prompts": {},
+  "humans": {
+    "h_c67e2d92658104": {
+      "author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  }
+}
