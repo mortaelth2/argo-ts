@@ -1,14 +1,22 @@
-import { App } from "cdk8s";
+import { App, Names } from "cdk8s";
 import * as fs from "fs";
 import * as path from "path";
 import _ = require("lodash");
+
+/**
+ * Manifest file base name for a component path, e.g. "root/builder/app" -> "root-builder-app".
+ * Shared by the renamer and the lookup so the two can never disagree.
+ */
+export function componentFileBaseName(componentPath: string): string {
+    return componentPath.replace(/\//g, "-").toLowerCase();
+}
 
 export class SynthesisFileManager {
     /**
      * Renames synthesized files to follow a consistent naming convention.
      *
-     * Converts files from format: "001-component-name-abc12345.k8s.yaml"
-     * To format: "component-name.k8s.yaml"
+     * Converts files from format: "0001-root-builder-app-abc12345.k8s.yaml"
+     * To format: "root-builder-app.k8s.yaml" (the chart's full construct path)
      */
     static renameSynthFiles(app: App): void {
         const outputDir = app.outdir;
@@ -18,11 +26,19 @@ export class SynthesisFileManager {
             return;
         }
 
+        // cdk8s names chart files with Names.toDnsLabel, which caps the name at 63 chars by cutting
+        // the leading path components. Parsing that name back can't recover the full path the lookup
+        // expects, so map each cdk8s label to its chart's path instead.
+        const pathByLabel = new Map(app.charts.map((chart) => [Names.toDnsLabel(chart), chart.node.path]));
         const files = fs.readdirSync(outputDir);
 
         for (const file of files) {
             try {
-                const newName = SynthesisFileManager.generateCleanFileName(file);
+                const match = file.match(/^(?:\d+-)?(.*)\.k8s\.yaml$/i);
+                const chartPath = match ? pathByLabel.get(match[1]) : undefined;
+                const newName = chartPath
+                    ? `${componentFileBaseName(chartPath)}.k8s.yaml`
+                    : SynthesisFileManager.generateCleanFileName(file);
                 if (newName && newName !== file) {
                     SynthesisFileManager.renameFile(outputDir, file, newName);
                 }
@@ -93,7 +109,7 @@ export class ComponentOutputManager {
             return rootComponent;
         }
 
-        return componentEnv.replace(/\//g, "-").toLowerCase();
+        return componentFileBaseName(componentEnv);
     }
 
     /**
