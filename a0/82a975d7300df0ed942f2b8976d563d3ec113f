@@ -1,0 +1,41 @@
+spec/renameSynthFiles.spec.ts
+  s_e7b49608822795::t_a76173082e3aeb 1-41
+src/bootstrap.ts
+  s_e7b49608822795::t_35a0d07042f798 1,6-13,18-19,29-32,37-41,112
+docker/Dockerfile
+  s_a5cb9041d606fb::t_f6e7b18483f5b1 48
+  h_c67e2d92658104 13-17,49-54
+  s_a5cb9041d606fb::t_ae6a403c4d7d83 11-12,28,44-47
+  s_a5cb9041d606fb::t_75c45f03844c2a 18
+package.json
+  s_e7b49608822795::t_4c27db6c67cf97 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a082a975d7300df0ed942f2b8976d563d3ec113f",
+  "prompts": {},
+  "humans": {
+    "h_c67e2d92658104": {
+      "author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  },
+  "sessions": {
+    "s_a5cb9041d606fb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "54bd50f2-be1f-4dcf-a272-b9f03cf6323a",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    },
+    "s_e7b49608822795": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "15692ef2-beca-49e7-8d9e-795406a3ab98",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  }
+}
