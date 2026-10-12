@@ -218,10 +218,18 @@ export abstract class ArgoBootstrapApp extends Chart {
         const hasAdditionalSources = config.additionalSources && config.additionalSources.length > 0;
         const childHasAdditionalSources = childApp.props.additionalSources && childApp.props.additionalSources.length > 0;
 
+        // The child's Application is emitted here by the parent, so the child's own autoSyncEnabled must be
+        // applied here too; otherwise it only reaches the child's children and never its own Application.
+        const childAutoSync = childApp.props.autoSyncEnabled;
+        const syncPolicy =
+            childAutoSync === undefined
+                ? config.defaultSyncPolicy
+                : { ...config.defaultSyncPolicy, automated: DefaultArgoConfig.enhancedSyncPolicy(childAutoSync).automated };
+
         const defaultSpec: any = {
             destination: DefaultArgoConfig.destination(config.namespace ?? childApp.namespace ?? "default"),
             project: config.project!,
-            syncPolicy: config.defaultSyncPolicy,
+            syncPolicy,
         };
 
         // If additional sources are defined, use multi-source format
