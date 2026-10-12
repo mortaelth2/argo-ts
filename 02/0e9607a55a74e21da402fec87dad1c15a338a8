@@ -1,0 +1,26 @@
+spec/childAutoSync.spec.ts
+  s_01a8211bbcb320::t_e77e7867cf3ba5 1-48
+src/argoApp.ts
+  s_01a8211bbcb320::t_e77e7867cf3ba5 221-228,232
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "020e9607a55a74e21da402fec87dad1c15a338a8",
+  "prompts": {},
+  "humans": {
+    "h_c67e2d92658104": {
+      "author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  },
+  "sessions": {
+    "s_01a8211bbcb320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3a79eb-98fd-4d90-b256-f6231c0f5ffb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  }
+}
