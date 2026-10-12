@@ -1,0 +1,14 @@
+package.json
+  h_c67e2d92658104 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "822ebd342d41d4d00a9ff2a40a7cfe0adf386480",
+  "prompts": {},
+  "humans": {
+    "h_c67e2d92658104": {
+      "author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  }
+}
