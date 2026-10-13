@@ -95,6 +95,7 @@ Abstract base class. Extend it to define components:
 | `autoSyncEnabled` | `boolean` | `true` | Enable ArgoCD auto-sync (inherited down the tree) |
 | `namespace` | `string` | `"default"` | Target Kubernetes namespace |
 | `argoAppSpec` | `DeepOptional<IApplication["spec"]>` | -- | Override any ArgoCD Application spec fields |
+| `argoAppMetadata` | `ArgoApplicationMetadata` | -- | Annotations (merged over the default `manifest-generate-paths: "."`), labels, extra finalizers, and `resourcesFinalizer: false` to leave out `resources-finalizer.argocd.argoproj.io` |
 | `additionalSources` | `IApplication["spec"]["sources"]` | -- | Additional sources for multi-source Applications |
 
 ### SOPS Secrets

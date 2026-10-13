@@ -21,6 +21,8 @@ export interface ArgoBootstrapAppProps extends ChartProps {
     autoSyncEnabled?: boolean;
     project?: string;
     argoAppSpec?: DeepOptional<ApplicationSpec>;
+    /** Metadata of the Application the parent generates for this component. */
+    argoAppMetadata?: ArgoApplicationMetadata;
     additionalSources?: DeepOptional<ApplicationSpecSources>[];
 }
 
@@ -190,6 +192,7 @@ export abstract class ArgoBootstrapApp extends Chart {
             return new ArgoApplication(construct, `${childApp.node.id}-app`, {
                 applicationName: this.generateApplicationName(childApp.node.id),
                 spec: appSpec,
+                metadata: childApp.props.argoAppMetadata,
             });
         });
     }
@@ -271,16 +274,26 @@ export abstract class ArgoBootstrapApp extends Chart {
     }
 }
 
+export interface ArgoApplicationMetadata {
+    /** Merged over the defaults, so e.g. `argocd.argoproj.io/manifest-generate-paths` can be narrowed per Application. */
+    annotations?: Record<string, string>;
+    labels?: Record<string, string>;
+    /** Added to `resources-finalizer.argocd.argoproj.io` unless `resourcesFinalizer` is false. */
+    finalizers?: string[];
+    /**
+     * `false` leaves out `resources-finalizer.argocd.argoproj.io`, so deleting the Application orphans its
+     * resources instead of deleting them. @default true
+     */
+    resourcesFinalizer?: boolean;
+}
+
 /**
  * Configuration for ArgoCD Application resources.
  */
 export interface ArgoApplicationConfig {
     applicationName: string;
     spec: DeepOptional<ApplicationSpec>;
-    metadata?: {
-        annotations?: Record<string, string>;
-        finalizers?: string[];
-    };
+    metadata?: ArgoApplicationMetadata;
     autoSyncEnabled?: boolean;
     syncPolicy?: DeepOptional<ApplicationSpecSyncPolicy>;
 }
@@ -302,6 +315,10 @@ export interface ArgoApplicationSetConfig {
  */
 export class ArgoApplication extends CdkApplication {
     constructor(scope: Construct, id: string, config: ArgoApplicationConfig) {
+        const finalizers = [
+            ...(config.metadata?.finalizers ?? []),
+            ...(config.metadata?.resourcesFinalizer === false ? [] : ["resources-finalizer.argocd.argoproj.io"]),
+        ];
         const props: DeepOptional<ApplicationProps> = {
             metadata: {
                 namespace: "argocd",
@@ -310,7 +327,8 @@ export class ArgoApplication extends CdkApplication {
                     ...DefaultArgoConfig.annotations(),
                     ...config.metadata?.annotations,
                 },
-                finalizers: [...(config.metadata?.finalizers ?? []), "resources-finalizer.argocd.argoproj.io"],
+                ...(config.metadata?.labels && { labels: config.metadata.labels }),
+                ...(finalizers.length > 0 && { finalizers }),
             },
             spec: {
                 syncPolicy: config.syncPolicy ?? DefaultArgoConfig.syncPolicy(config.autoSyncEnabled),

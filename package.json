@@ -1,6 +1,6 @@
 {
   "name": "@mortaelth/argo-ts",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A cdk8s-based ArgoCD Config Management Plugin framework with self-deploying component hierarchy",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

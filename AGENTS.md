@@ -62,6 +62,7 @@ Abstract base class extending cdk8s `Chart`. **All deployable components** exten
 | `autoSyncEnabled` | `boolean` | `true` | ArgoCD auto-sync (inherited down the tree) |
 | `namespace` | `string` | `"default"` | Target K8s namespace |
 | `argoAppSpec` | `DeepOptional<ApplicationSpec>` | — | Override any ArgoCD Application spec fields |
+| `argoAppMetadata` | `ArgoApplicationMetadata` | — | Annotations (merged over the default `manifest-generate-paths: "."`), labels, extra finalizers, `resourcesFinalizer: false` to drop `resources-finalizer.argocd.argoproj.io` |
 | `additionalSources` | `DeepOptional<ApplicationSpecSources>[]` | — | Additional sources for multi-source Applications |
 
 **Tree-walking resolution:** Both `project` and `autoSyncEnabled` use `resolve*()` methods that check the current component's props, then walk up the construct tree to inherit from the nearest `ArgoBootstrapApp` ancestor.
