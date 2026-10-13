@@ -1,0 +1,33 @@
+spec/childAppMetadata.spec.ts
+  s_01a8211bbcb320::t_b8015b24fe9f19 1-50
+README.md
+  s_01a8211bbcb320::t_f8de3318cee8c1 98
+AGENTS.md
+  s_01a8211bbcb320::t_f8de3318cee8c1 65
+src/argoApp.ts
+  s_01a8211bbcb320::t_b8015b24fe9f19 318-321,331
+  s_01a8211bbcb320::t_8cc251f7c958e8 24-25,195,277-289,296,330
+package.json
+  h_c67e2d92658104 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6fa10380ebaee3ab9adebc1c922de3922db67f3f",
+  "prompts": {},
+  "humans": {
+    "h_c67e2d92658104": {
+      "author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  },
+  "sessions": {
+    "s_01a8211bbcb320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3a79eb-98fd-4d90-b256-f6231c0f5ffb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jiri Soukal <jiri.soukal@pricefx.com>"
+    }
+  }
+}
